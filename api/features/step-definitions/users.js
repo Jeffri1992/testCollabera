@@ -70,7 +70,7 @@ Given('Show Total active',  { timeout: 60000 }, async function () {
       break; // stop if doesnt have data
     }
 
-    // count inactive
+    // count active
     const activeCount = usersData.filter(u => u.status === 'active').length;
     totalActive += activeCount;
 
