@@ -1,0 +1,13 @@
+screenshots/*
+test_apk/*
+.env
+index.html
+appium.txt
+node_modules
+_linux/
+.idea/
+.vscode/
+.DS_Store
+features/support/images
+./support/images/*
+report/*

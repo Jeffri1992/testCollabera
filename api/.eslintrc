@@ -1,0 +1,54 @@
+{
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "node": true,
+        "jquery": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly",
+        "_": "writable",
+        "window": true,
+        "document": true,
+        "alert": true,
+        "console": true,
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
+    "rules": {
+        "new-cap": [
+            "off"
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "max-len": [
+            "off"
+        ],
+        "block-spacing": [
+            "error",
+            "always"
+        ],
+        "require-jsdoc": [
+            "off"
+        ],
+        "no-undef": [
+            "off"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    },
+    "ignorePatterns": [
+        "node_modules/**/*.js",
+        "wdio.conf.js"
+    ]
+}
