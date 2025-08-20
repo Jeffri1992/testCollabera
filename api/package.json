@@ -19,7 +19,9 @@
     "app-module-path": "^2.2.0",
     "bluebird": "^3.7.2",
     "chai": "^4.3.10",
-    "superagent": "^8.1.2"
+    "superagent": "^8.1.2",
+    "@faker-js/faker": "^8.2.0",
+    "faker": "^5.5.3"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.41",

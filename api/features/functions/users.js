@@ -1,37 +1,51 @@
 import { } from 'dotenv/config';
 import Bluebird from 'bluebird';
 import superagent from 'superagent';
-import helpers from '../helpers-api/users.js'
+import { users, getRandomGender, getRandomStatus } from '../helpers-api/users.js'
+import { faker } from '@faker-js/faker';
 
-const randomIdUnique = Math.floor(Date.now() / 1000)
-helpers.id = randomIdUnique
 
-export const users = {
+export const profile = {
 
   async getUser() {
-    return Bluebird.promisifyAll(superagent).get(`https://petstore.swagger.io/v2/user/jeffri92${helpers.id}`)
+    return Bluebird.promisifyAll(superagent).get(`https://gorest.co.in/public/v2/users`)
+  },
+
+  async getAllUserInactive(page,perPage) {
+    return Bluebird.promisifyAll(superagent).get(`https://gorest.co.in/public/v2/users?page=${page}&per_page=${perPage}&status=inactive`)
+  },
+
+  async getAllUserActive(page,perPage) {
+    return Bluebird.promisifyAll(superagent).get(`https://gorest.co.in/public/v2/users?page=${page}&per_page=${perPage}&status=active`)
+  },
+
+  async getSpesificUser() {
+    return Bluebird.promisifyAll(superagent).get(`https://gorest.co.in/public/v2/users?name=${users.name}`)
   },
 
   async createUser() {
+    users.name = faker.person.fullName()
+    users.gender = await getRandomGender()
+    users.status = await getRandomStatus()
+    users.email = faker.internet.email()
     console.log("Body Contain")
     console.log("============")
-    console.log("ID: ", randomIdUnique)
-    console.log(`UserName: jeffri92${randomIdUnique}`)
+    console.log("Name: ", users.name)
+    console.log("Gender: ", users.gender)
+    console.log("Status: ", users.status)
+    console.log("Email: ", users.email)
     console.log("\n")
-    return Bluebird.promisifyAll(superagent).post(`https://petstore.swagger.io/v2/user`)
+    return Bluebird.promisifyAll(superagent).post(`https://gorest.co.in/public/v2/users`)
+      .set('Authorization', 'Bearer 14359f31ee90b333f945c1793fe0d9b7e844f23e0d7c553c31c258844491144a')
       .send(
         {
-          "id": randomIdUnique,
-          "username": `jeffri92${randomIdUnique}`,
-          "firstName": "test",
-          "lastName": "test",
-          "email": "a@gmail.com",
-          "password": "asd",
-          "phone": "0847812232",
-          "userStatus": 0
+          "name": users.name,
+          "gender": users.gender,
+          "email": users.email,
+          "status": users.status
         }
       )
   }
 
 };
-export default users;
+export default profile;
