@@ -6,7 +6,9 @@
 
 
 if you want run spesific Testcase : npm test -- --tags=@create-user-and-verify-id 
+
 OR 
+
 npm test -- --tags=@check-user-verify-status
 
 
