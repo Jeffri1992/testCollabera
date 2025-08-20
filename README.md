@@ -3,7 +3,11 @@
 - First, go to api folder [cd/testCollabera/api]
 - Npm i
 - Run Command : npm test -- --tags=@all [for running all testcase]
-if you want run spesific Testcase : npm test -- --tags=@create-user-and-verify-id OR npm test -- --tags=@check-user-verify-status
+if you want run spesific Testcase : npm test -- --tags=@create-user-and-verify-id 
+
+OR 
+
+npm test -- --tags=@check-user-verify-status
 
 
 After run will get cucumber report.
