@@ -13,6 +13,7 @@ Given('Create a new employee and Verify Id', async function () {
   //The Location header contains the URL pointing to the newly created resource.
   console.log(`Date ${now}`);
   console.log(`Body Respond : ${JSON.stringify(createResponse.body)}`);
+  console.log("Response Code : ",createResponse.statusCode)
   console.log("\n");
   console.log("is id NumericId ", await isNumericId(createResponse.body.id))
   console.log("\n");
@@ -24,6 +25,8 @@ Given('Verify First entry', async function () {
   const getResponse = await users.getUser();
   console.log(await getResponse.body[0]);
   expect(getResponse.statusCode).to.equal(200)
+  //200 menas: OK. Everything worked as expected.
+  console.log("Response Code : ",getResponse.statusCode)
   console.log("First Data is : ", getResponse.body[0].status)
   console.log("\n");
   console.log("\n");
@@ -53,7 +56,6 @@ Given('Show Total inactive',  { timeout: 60000 }, async function () {
 
     page++;
   }
-
   console.log("Total Inactive Users:", totalInactive);
 });
 
@@ -76,6 +78,5 @@ Given('Show Total active',  { timeout: 60000 }, async function () {
 
     page++;
   }
-
   console.log("Total Active Users:", totalActive);
 });
